@@ -125,7 +125,7 @@ public class JobDaoimp implements IJobDao {
 	@Override
 	public void activateJob(Job j) {
 		try {
-			PreparedStatement p = con.prepareStatement("update employee set active=? where empid=?");
+			PreparedStatement p = con.prepareStatement("update Job set active=? where JobId=?");
 			p.setString(1, "Active");
 			p.setInt(2, j.getJobId());
 			int i = p.executeUpdate();
@@ -144,7 +144,7 @@ public class JobDaoimp implements IJobDao {
 	@Override
 	public void deactivateJob(Job j) {
 		try {
-			PreparedStatement p = con.prepareStatement("update employee set active=? where empid=?");
+			PreparedStatement p = con.prepareStatement("update Job set active=? where JobId=?");
 			p.setString(1, "Deactive");
 			p.setInt(2, j.getJobId());
 			int i = p.executeUpdate();
