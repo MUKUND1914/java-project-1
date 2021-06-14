@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,6 +20,7 @@ import javax.swing.JTextField;
 import controller.EmployeeController;
 import javax.swing.SwingConstants;
 import java.awt.SystemColor;
+import javax.swing.JRadioButton;
 
 public class RegistrationFrame extends JFrame {
 	/**
@@ -27,14 +29,23 @@ public class RegistrationFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel p;
 	private JFrame f;
-	private JTextField tfirstname, tlastname, tuserid, tgender, trole;
+	private JTextField tfirstname, tlastname, tuserid;
 	private JPasswordField tpassword, tconformpassword;
 	private JLabel lfirstname, llastname, luserid, lgender, lrole, lpassword, lconpassword;
 	private JButton bsubmit;
 	private static EmployeeController ec = null;
+	private JRadioButton rdbtnNewRadioButton;
+	private JRadioButton rdbtnNewRadioButton_1;
+    ButtonGroup bg;
+    ButtonGroup bg1;
+    private JRadioButton rdbtnNewRadioButton_2;
+    private JRadioButton rdbtnNewRadioButton_3;
+    private JRadioButton rdbtnNewRadioButton_4;
+	
 
 	public RegistrationFrame() throws ClassNotFoundException, SQLException {
-
+         bg=new ButtonGroup(); 
+         bg1=new ButtonGroup();
 		p = new JPanel();
 		p.setBackground(new Color(176, 196, 222));
 		p.setFont(new Font("Lucida Grande", Font.BOLD, 15));
@@ -75,12 +86,6 @@ public class RegistrationFrame extends JFrame {
 		tuserid = new JTextField();
 		tuserid.setColumns(10);
 
-		tgender = new JTextField();
-		tgender.setColumns(10);
-
-		trole = new JTextField();
-		trole.setColumns(10);
-
 		tpassword = new JPasswordField();
 		tpassword.setColumns(10);
 
@@ -98,8 +103,8 @@ public class RegistrationFrame extends JFrame {
 				UFN = tfirstname.getText();
 				ULN = tlastname.getText();
 				UID = tuserid.getText();
-				UG = tgender.getText();
-				UR = trole.getText();
+				UG= bg.getSelection().getActionCommand();
+				UR = bg1.getSelection().getActionCommand();
 				UCP = new String(tconformpassword.getPassword());
 				UP = new String(tpassword.getPassword());
 				if (UP.equals(UCP)) {
@@ -133,9 +138,7 @@ public class RegistrationFrame extends JFrame {
 		p.add(luserid);
 		p.add(tuserid);
 		p.add(lgender);
-		p.add(tgender);
 		p.add(lrole);
-		p.add(trole);
 		p.add(lpassword);
 		p.add(tpassword);
 		p.add(lconpassword);
@@ -154,8 +157,6 @@ public class RegistrationFrame extends JFrame {
 		tfirstname.setBounds(16, 140, 268, 33);
 		tlastname.setBounds(355, 140, 268, 33);
 		tuserid.setBounds(16, 234, 268, 33);
-		tgender.setBounds(16, 441, 268, 33);
-		trole.setBounds(16, 535, 268, 33);
 		tpassword.setBounds(16, 331, 268, 33);
 		tconformpassword.setBounds(355, 331, 268, 33);
 
@@ -182,6 +183,43 @@ public class RegistrationFrame extends JFrame {
 		});
 		btnNewButton.setBounds(443, 622, 122, 40);
 		p.add(btnNewButton);
-
+		
+		rdbtnNewRadioButton = new JRadioButton("MALE");
+		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.BOLD, 18));
+		rdbtnNewRadioButton.setBounds(97, 438, 103, 40);
+		rdbtnNewRadioButton.setActionCommand("male");
+		p.add(rdbtnNewRadioButton);
+		
+		rdbtnNewRadioButton_1 = new JRadioButton("FEMALE");
+		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		rdbtnNewRadioButton_1.setBounds(238, 438, 103, 40);
+		rdbtnNewRadioButton_1.setActionCommand("female");
+		p.add(rdbtnNewRadioButton_1);
+		
+	
+		bg.add(rdbtnNewRadioButton);
+		bg.add(rdbtnNewRadioButton_1);
+		
+		rdbtnNewRadioButton_2 = new JRadioButton("EMP");
+		rdbtnNewRadioButton_2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		rdbtnNewRadioButton_2.setBounds(97, 524, 103, 42);
+		rdbtnNewRadioButton_2.setActionCommand("EMP");
+		p.add(rdbtnNewRadioButton_2);
+		
+		rdbtnNewRadioButton_3 = new JRadioButton("HRA");
+		rdbtnNewRadioButton_3.setFont(new Font("Tahoma", Font.BOLD, 18));
+		rdbtnNewRadioButton_3.setBounds(238, 524, 103, 42);
+		rdbtnNewRadioButton_3.setActionCommand("HRA");
+		p.add(rdbtnNewRadioButton_3);
+		
+		rdbtnNewRadioButton_4 = new JRadioButton("PME");
+		rdbtnNewRadioButton_4.setFont(new Font("Tahoma", Font.BOLD, 18));
+		rdbtnNewRadioButton_4.setBounds(380, 524, 103, 42);
+		rdbtnNewRadioButton_4.setActionCommand("PME");
+		p.add(rdbtnNewRadioButton_4);
+         
+		bg1.add(rdbtnNewRadioButton_2);
+		bg1.add(rdbtnNewRadioButton_3);
+		bg1.add(rdbtnNewRadioButton_4);
 	}
 }
