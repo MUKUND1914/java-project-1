@@ -44,7 +44,8 @@ public class ActivateJobFrame {
 		jobc=new JobController();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id=Integer.parseInt(textField.getText());
+				String s=textField.getText();
+				int id=Integer.parseInt(s);
 				jobc.activateJob(id);
 			}
 		});
