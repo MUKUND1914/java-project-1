@@ -23,7 +23,7 @@ public class AllEmployeesFrame extends JFrame {
 		frame=new JFrame();   
 		JTable table=new JTable();
 		DefaultTableModel model = new DefaultTableModel(new String[]{"empId", "FirstName", "LastName", "Roles","Gender", "Active"}, 0);
-		ResultSet rst=s.executeQuery("select * from Employee");
+		ResultSet rst=s.executeQuery("select * from Employee where Roles='EMP'");
 		model.addRow(new Object[]{"empId", "FirstName", "LastName", "Roles","Gender", "Active"});
 		while(rst.next())
 		{
