@@ -129,7 +129,7 @@ public class EmployeeDAOimp implements IEmployeeDAO {
 	public void diactivateEmployee(Employee emp) {
 		// TODO Auto-generated method stub
 		try {
-			PreparedStatement pst = con.prepareStatement("update employee set active=? where empid=?");
+			PreparedStatement pst = con.prepareStatement("update employee set active=? where empid=? and Roles='EMP'");
 			pst.setString(1, "Deactive");
 			pst.setInt(2, emp.getEmpId());
 			int i = pst.executeUpdate();
